@@ -6,6 +6,12 @@ RSpec.describe Content, type: :model do
       subject = create(:content)
       expect(subject).to be_valid
     end
+
+    it "can have a purchase_option" do
+      subject = create(:content)
+      subject.purchase_options.create(attributes_for(:purchase_option))
+      expect(subject.purchase_options.count).to eq(1)
+    end
   end
 
   context "with invalid params" do
