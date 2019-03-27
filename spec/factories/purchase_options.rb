@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :purchase_option do
     price { Faker::Number.decimal }
-    quality { %w(HD SD) }
+    quality { %w(HD SD).sample }
     content
 
     factory :invalid_purchase_option do
