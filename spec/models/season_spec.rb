@@ -2,10 +2,19 @@ require 'rails_helper'
 
 RSpec.describe Season, type: :model do
   context "with valid params" do
+    let(:episode) { create(:episode) }
+
     it "creates a valid season" do
       subject = create(:season)
       expect(subject).to be_valid
       expect(subject.type).to eq('Season')
+    end
+
+    it "can have an episode" do
+      subject = create(:season)
+      subject.episodes << episode
+      expect(subject.episodes.first).to eq(episode)
+      expect(subject.episodes.count).to eq(1)
     end
   end
 
