@@ -22,11 +22,6 @@ RSpec.describe Purchase, type: :model do
   end
 
   context "with invalid params" do
-    it "does not create a purchase" do
-      subject = build(:invalid_purchase)
-      expect(subject.valid?).to be_falsy
-    end
-
     it "does not accept invalid user" do
       subject = build(:invalid_purchase_user)
       expect(subject.valid?).to be_falsy
@@ -38,7 +33,7 @@ RSpec.describe Purchase, type: :model do
     end
 
     it "raises a RecordInvalid exception" do
-      expect { create(:invalid_purchase)}.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:invalid_purchase_user)}.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

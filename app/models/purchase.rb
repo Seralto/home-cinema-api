@@ -4,11 +4,13 @@ class Purchase < ApplicationRecord
 
   validates :user, presence: true
   validates :purchase_option, presence: true
-  validates :date, presence: true
 
   ALIVE_TIME = 2.days
 
+  scope :active, -> { where('created_at >= ?', Date.today - ALIVE_TIME)}
+  scope :ordered, -> { order(created_at: :asc)}
+
   def active?
-    date >= Date.today - ALIVE_TIME
+    created_at >= (Date.today - ALIVE_TIME)
   end
 end
