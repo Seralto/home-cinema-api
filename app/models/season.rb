@@ -1,3 +1,3 @@
 class Season < Content
-  has_many :episodes, -> { order('cast(number as unsigned) asc') }
+  has_many :episodes, -> { order(number: :asc) }
 end
