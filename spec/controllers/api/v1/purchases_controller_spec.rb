@@ -31,7 +31,33 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
     end
 
     context "with invalid params" do
+      it 'does not create a purchase' do
+        expect do
+          post :create, params: { purchase: purchase_params.except(:user_id) }
+        end.to change(Purchase, :count).by(0)
+      end
+    end
 
+    context "when user already has the content" do
+      it 'does not create a purchase if it still is available' do
+        create(:purchase, user: user, purchase_option: purchase_option)
+
+        post :create, params: { purchase: purchase_params }
+        json = JSON.parse(response.body)
+
+        expect(json['user_id'].first).to match(/user already has this content/)
+        expect(Purchase.count).to eq(1)
+      end
+
+      it 'creates a purchase if it is not available' do
+        purchase = create(:purchase, user: user, purchase_option: purchase_option)
+        purchase.created_at = 3.days.ago
+        purchase.save
+
+        expect do
+          post :create, params: { purchase: purchase_params }
+        end.to change(Purchase, :count).by(1)
+      end
     end
   end
 
