@@ -110,12 +110,100 @@ Status: 200 OK
     "plot": "An anthology series exploring a twisted high-tech world.",
     "created_at": "2018-10-01T19:34:22.520Z",
     "episodes": [
-      "id": 1,
-      "number": 1,
-      "title": "Playtest",
-      "plot": "After accepting a mysterious offer from a high profile video game developer, things start to go wrong."
+      {
+        "id": 1,
+        "number": 1,
+        "title": "Playtest",
+        "plot": "After accepting a mysterious offer from a high profile video game developer, things start to go wrong."
+      }
     ]
   }
+]
+```
+
+### Performing a Purchase
+
+```
+POST /purchases
+```
+
+**Input**:
+
+Attribute	|	Type	|	Description
+----	|	----	|	----
+`user_id`	|	`integer`	|	User ID **(required)**
+`purchase_option_id`	|	`integer`	|	Purchase Option ID **(required)**
+
+**Example**:
+
+```json
+{
+	"user_id": 1,
+	"purchase_option_id": 1
+}
+```
+
+**Response**:
+
+```
+Status: 201 Created
+```
+
+```json
+{
+    "id": 3,
+    "purchase_date": "04/02/2019",
+    "remaing_days": 2,
+    "user": {
+        "id": 1,
+        "email": "joan@schneider.io"
+    },
+    "purchase_option": {
+        "id": 2,
+        "price": "2.99",
+        "quality": "SD",
+        "content": {
+            "id": 1,
+            "title": "Matrix",
+            "plot": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers."
+        }
+    }
+}
+```
+
+### Library
+
+```
+GET /users/:id/library
+```
+
+**Response**:
+
+```
+Status: 200 OK
+```
+
+```json
+[
+    {
+        "id": 1,
+        "purchase_date": "04/02/2019",
+        "remaing_days": 2,
+        "user": {
+            "id": 1,
+            "email": "joan@schneider.io"
+        },
+        "purchase_option": {
+            "id": 1,
+            "price": "2.99",
+            "quality": "HD",
+            "content": {
+                "id": 1,
+                "title": "Matrix",
+                "plot": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers."
+            }
+        }
+    }
 ]
 ```
 
