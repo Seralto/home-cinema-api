@@ -4,7 +4,7 @@ class Purchase < ApplicationRecord
 
   ALIVE_TIME = 2.days
 
-  scope :active, -> { where('created_at >= ?', Date.today - ALIVE_TIME)}
+  scope :active, -> { where('purchases.created_at >= ?', Date.today - ALIVE_TIME)}
   scope :ordered, -> { order(created_at: :asc)}
 
   validates :user, presence: true
