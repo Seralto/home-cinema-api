@@ -71,10 +71,12 @@ Status: 200 OK
     "plot": "An anthology series exploring a twisted high-tech world.",
     "created_at": "2018-10-01T19:34:22.520Z",
     "episodes": [
-      "id": 1,
-      "number": 1,
-      "title": "Playtest",
-      "plot": "After accepting a mysterious offer from a high profile video game developer, things start to go wrong."
+      {
+        "id": 1,
+        "number": 1,
+        "title": "Playtest",
+        "plot": "After accepting a mysterious offer from a high profile video game developer, things start to go wrong."
+      }
     ]
   }
 ]
