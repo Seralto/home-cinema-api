@@ -5,8 +5,8 @@ module Api
       has_scope :ordered, type: :boolean, default: true
 
       def index
-        @contents = apply_scopes(Content).all
-        render json: @contents
+        @contents = apply_scopes(Content)
+        render json: @contents if stale?(@contents)
       end
     end
   end
