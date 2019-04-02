@@ -7,8 +7,8 @@ module Api
       has_scope :ordered, type: :boolean, default: true
 
       def index
-        @purchases = apply_scopes(Purchase).all
-        render json: @purchases
+        @purchases = apply_scopes(Purchase).all.includes(:user, purchase_option: :content)
+        render json: @purchases if stale?(@purchases)
       end
 
       def create
