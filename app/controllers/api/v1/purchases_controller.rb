@@ -5,6 +5,7 @@ module Api
 
       has_scope :active, type: :boolean, default: true
       has_scope :ordered, type: :boolean, default: true
+      has_scope :page, default: 1
 
       def index
         @purchases = apply_scopes(Purchase).all.includes(:user, purchase_option: :content)

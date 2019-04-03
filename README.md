@@ -207,6 +207,10 @@ Status: 200 OK
 ]
 ```
 
+### Pagination
+All resources are paginated.\
+You can select an specific page passing the parameter ```?page=1```.
+
 ### Testing
 Run all tests with the command:
 
