@@ -3,10 +3,12 @@ class CreateEpisodes < ActiveRecord::Migration[5.2]
     create_table :episodes do |t|
       t.string :title
       t.text :plot
-      t.string :number
-      t.references :season, foreign_key: true
+      t.integer :number
+      t.references :season, index: true
 
       t.timestamps
     end
+
+    add_foreign_key :episodes, :contents, column: :season_id
   end
 end
