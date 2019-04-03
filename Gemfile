@@ -5,6 +5,7 @@ ruby '2.6.2'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'faker'
 gem 'has_scope'
 gem 'kaminari'
 gem 'puma', '~> 3.11'
@@ -16,7 +17,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.8'
   gem "factory_bot_rails"
   gem 'sqlite3', '~> 1.3.6'
-  gem 'faker'
   gem 'pry-rails'
   gem 'pry-byebug'
 end
