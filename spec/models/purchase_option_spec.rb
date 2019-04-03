@@ -27,7 +27,7 @@ RSpec.describe PurchaseOption, type: :model do
     end
 
     it "raises a RecordInvalid exception" do
-      expect { create(:invalid_purchase_option)}.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:invalid_purchase_option) }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

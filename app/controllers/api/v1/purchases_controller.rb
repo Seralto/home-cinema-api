@@ -22,6 +22,11 @@ module Api
         end
       end
 
+      def show
+        @purchase = apply_scopes(Purchase).find(params[:id])
+        render json: @purchase if stale?(@purchase)
+      end
+
       private
 
       def get_user

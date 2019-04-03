@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     end
 
     it "raises a RecordInvalid exception" do
-      expect { create(:user, email: "invalid_email")}.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:user, email: "invalid_email") }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

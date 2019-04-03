@@ -25,7 +25,7 @@ RSpec.describe Season, type: :model do
     end
 
     it "raises a RecordInvalid exception" do
-      expect { create(:invalid_content, type: 'Season')}.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:invalid_content, type: 'Season') }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

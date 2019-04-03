@@ -15,6 +15,26 @@ RSpec.describe Api::V1::PurchasesController, type: :controller do
     end
   end
 
+  describe "GET #show" do
+    context "with valid purchase id" do
+      it "returns a purchase" do
+        purchase = create(:purchase)
+  
+        get :show, params: { id: purchase.id }
+        json = JSON.parse(response.body)
+  
+        expect(response).to be_successful
+        expect(json['id']).to eq(purchase.id)
+      end
+    end
+
+    context "with invalid purchase id" do
+      it "raises a RecordNotFound exception" do
+        expect { get :show, params: { id: 123 } }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
   describe "GET #create" do
     let(:user) { create(:user) }
     let(:purchase_option) { create(:purchase_option) }

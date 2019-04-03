@@ -9,6 +9,11 @@ module Api
         @contents = apply_scopes(Content)
         render json: @contents if stale?(@contents)
       end
+
+      def show
+        @content = apply_scopes(Content).find(params[:id])
+        render json: @content if stale?(@content)
+      end
     end
   end
 end

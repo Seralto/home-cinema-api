@@ -64,4 +64,57 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
     end
   end
 
+  describe "#GET show" do
+    context "/contents/1" do
+      it "returns a specific content" do
+        content = create(:content)
+        
+        get :show, params: { id: content.id }
+        json = JSON.parse(response.body)
+        
+        expect(response).to be_successful
+        expect(json['id']).to eq(content.id)
+        expect(json['type']).to eq(content.type)
+        expect(json['title']).to eq(content.title)
+        expect(json['plot']).to eq(content.plot)
+      end
+    end
+
+    context "/movies/1" do
+      it "returns a specific movie" do
+        movie = create(:movie)
+        
+        get :show, params: { id: movie.id }
+        json = JSON.parse(response.body)
+        
+        expect(response).to be_successful
+        expect(json['id']).to eq(movie.id)
+        expect(json['type']).to eq('Movie')
+        expect(json['title']).to eq(movie.title)
+        expect(json['plot']).to eq(movie.plot)
+      end
+    end
+
+    context "/seasons/1" do
+      it "returns a specific season" do
+        season = create(:season)
+        
+        get :show, params: { id: season.id }
+        json = JSON.parse(response.body)
+        
+        expect(response).to be_successful
+        expect(json['id']).to eq(season.id)
+        expect(json['type']).to eq('Season')
+        expect(json['title']).to eq(season.title)
+        expect(json['plot']).to eq(season.plot)
+      end
+    end
+
+    context "with invalid content id" do
+      it "raises a RecordNotFound exception" do
+        expect { get :show, params: { id: 123 } }.to raise_error(ActiveRecord::RecordNotFound)
+      end
+    end
+  end
+
 end

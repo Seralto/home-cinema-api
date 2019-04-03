@@ -38,6 +38,7 @@ Bellow you can see the main usage of the project resources.
 
 ```
 GET /movies
+GET /movies/1
 ```
 
 **Response**:
@@ -62,6 +63,7 @@ Status: 200 OK
 
 ```
 GET /seasons
+GET /seasons/1
 ```
 
 **Response**:
@@ -94,6 +96,7 @@ Status: 200 OK
 
 ```
 GET /contents
+GET /contents/1
 ```
 
 **Response**:
@@ -125,6 +128,43 @@ Status: 200 OK
         "plot": "After accepting a mysterious offer from a high profile video game developer, things start to go wrong."
       }
     ]
+  }
+]
+```
+
+### Purchases
+
+```
+GET /purchases
+GET /purchases/1
+```
+
+**Response**:
+
+```
+Status: 200 OK
+```
+
+```json
+[
+  {
+    "id": 1,
+    "purchase_date": "04/03/2019",
+    "remaing_days": 2,
+    "user": {
+      "id": 1,
+      "email": "alisonkohler@rodriguez.org"
+    },
+    "purchase_option": {
+      "id": 1,
+      "price": "5.00",
+      "quality": "HD",
+      "content": {
+        "id": 1,
+        "title": "Matrix",
+        "plot": "A computer hacker learns about the true nature of his reality and his role in the war against its controllers."
+      }
+    }
   }
 ]
 ```

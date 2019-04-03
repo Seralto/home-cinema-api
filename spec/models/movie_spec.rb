@@ -17,7 +17,7 @@ RSpec.describe Movie, type: :model do
     end
 
     it "raises a RecordInvalid exception" do
-      expect { create(:invalid_content, type: 'Movie')}.to raise_error(ActiveRecord::RecordInvalid)
+      expect { create(:invalid_content, type: 'Movie') }.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end
