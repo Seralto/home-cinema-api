@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  test: &base
+    image: ruby
+    volumes:
+      - .:/usr/local/src
+    depends_on:
+      - db
+    command: bundle exec rspec
+    environment:
+      - RAILS_ENV=test
+
+  web:
+    <<: *base
+    build: .
+    command: bundle exec rails server -p 3000 -b '0.0.0.0'
+    environment:
+      - RAILS_ENV=development
+    ports:
+      - 3000:3000
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres

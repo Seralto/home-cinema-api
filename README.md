@@ -8,20 +8,28 @@ You can see a live demo of this API and test the endpoints bellow [here](https:/
 The project has the following dependencies:
 
 * Ruby 2.6.2
-* Rails 5.2.2
+* Rails 5.2.
 
-## Setup
-In order to run the program, follow the steps:
+## Clone
 
-1. Install the project dependencies above and run the following commands.
-2. `$ git clone https://github.com/Seralto/home-cinema-api`
-3. `$ cd home-cinema-api`
-4. `$ bundle install`
-5. `$ rails db:setup`
+1. `git clone https://github.com/Seralto/home-cinema-api`
+2. `cd home-cinema-api`
 
-## Running
-1. `$ rails server`
-2. Go to [http://localhost:3000/api/v1/contents](http://localhost:3000/api/v1/contents) in your browser.
+## Running with Docker
+
+1. `docker-compose build`
+2. `docker-compose run --rm web rails db:setup`
+3. `docker-compose up -d web`
+
+## Running without Docker
+
+1. `bundle install`
+2. `rails db:setup`
+3. `rails server`
+
+## Access
+
+Go to [http://localhost:3000/api/v1/contents](http://localhost:3000/api/v1/contents) in your browser.
 
 ## API Usage
 Bellow you can see the main usage of the project resources.
@@ -209,11 +217,14 @@ Status: 200 OK
 
 ### Pagination
 All resources are paginated.\
-You can select an specific page passing the parameter ```?page=1```.
+You can select an specific page providing the parameter `?page=1`.
 
-### Testing
-Run all tests with the command:
+### Testing with Docker
+```sh
+$ docker-compose run --rm test
+```
 
-```shell
+### Testing without Docker
+```sh
 $ bundle exec rspec
 ```
