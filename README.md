@@ -1,9 +1,6 @@
 # Home Cinema [![Build Status](https://travis-ci.org/Seralto/home-cinema-api.svg?branch=master)](https://travis-ci.org/Seralto/home-cinema-api)
 This project is a RESTFul API that implements a content purchase system for Movies and Seasons.
 
-## Demo
-You can see a live demo of this API and test the endpoints bellow [here](https://home-cinema-api.herokuapp.com/api/v1/contents).
-
 ## Dependencies
 The project has the following dependencies:
 
